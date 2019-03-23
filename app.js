@@ -10,8 +10,8 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 function sum(a, b) { //eslint-disable-line
   var theSum = a + b;
-  var theMessage = [theSum, 'The sum of ' + a + ' and ' + b + ' is ' + theSum +'.'];
-  return theMessage;
+  var theMessage = 'The sum of ' + a + ' and ' + b + ' is ' + theSum +'.';
+  return [theSum, theMessage];
 
 }
 
@@ -31,8 +31,8 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 function multiply(a, b) { //eslint-disable-line
   var theProduct = a * b;
-  var theMessage = [theProduct, 'The product of ' + a + ' and ' + b + ' is ' + theProduct +'.'];
-  return theMessage;
+  var theMessage = 'The product of ' + a + ' and ' + b + ' is ' + theProduct +'.';
+  return [theProduct, theMessage];
 }
 
 // Here is the test for multiply(); uncomment it to run it
@@ -53,11 +53,16 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
-
+  var initialAdd = sum(a, b)[0];
+  var finalAdd = sum(initialAdd, c)[0];
+  var initialMult = multiply(a, b)[0];
+  var finalMult = multiply(initialMult, c)[0];
+  return [finalAdd, finalMult, `${a} and ${b} and ${c} sum to ${finalAdd}.`, `The product of ${a} and ${b} and ${c} is ${finalMult}.`];
 }
+console.log(sumAndMultiply(4,7,5));
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
-// testSumAndMultiply(4,7,5);
+testSumAndMultiply(4,7,5);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -74,13 +79,16 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 var testArray = [2, 3, 4]; //eslint-disable-line
 
-function sumArray(sumArr) { //eslint-disable-line
-
+function sumArray(testArray) { //eslint-disable-line
+  var sumAandB = sum(testArray[0], testArray[1])[0];
+  var nowAddc = sum(sumAandB, testArray[2])[0];
+  return [nowAddc, `2,3,4 was passed in as an array of numbers, and ${nowAddc} is their sum.`];
 }
+console.log(sumArray(2, 3, 4));
 
 // Here is the test for sumArray(); uncomment it to run it
 
-// testSumArray(testArray);
+testSumArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
